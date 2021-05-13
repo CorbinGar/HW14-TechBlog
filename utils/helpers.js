@@ -1,10 +1,10 @@
 module.exports = {
-    format_date: (date) => {
+    formatDate: (date) => {
         try {
             return date.toLocaleDateString();
             
         } catch (error) {
-            return ''
+            return 'ERR IN helpers.js'
         }
         
     },
