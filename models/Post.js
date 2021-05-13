@@ -12,7 +12,7 @@ Post.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        text: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -24,13 +24,13 @@ Post.init(
                 unique: false,
             }
         },
-        hasImage: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
-        imageLink: {
-            type: DataTypes.STRING,
-            allowNull: true
+        content: {
+            type: DataTypes.TEXT,
         }
 
     },
