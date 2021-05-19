@@ -6,41 +6,39 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//Express middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-//serve static folder
-// app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(__dirname + '/public'))
+// Set up custom helpers
+const hbs = exphbs.create({ helpers });
 
-// Set up Handlebars.js engine
-const hbs = exphbs.create({ defaultLayout: 'main', helpers });
-// Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
-
-//passport auth middleware
-app.use(session(
-  {
+//define what session will look like. 
+const sess = {
     secret: 'Super secret secret',
+    cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-      db: sequelize
+        db: sequelize
     })
-  }
-))
-app.use(passport.initialize());
-app.use(passport.session());
+};
+// use the session
+app.use(session(sess));
+
+// Tell Express.js to use handlebars template engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
+// Use them
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+    app.listen(PORT, () => console.log('Now listening'));
 });
+
