@@ -1,25 +1,12 @@
 <!-- Loop over each object in the posts array -->
-<div class="row card-container">
-
-  {{#each posts as |post| }}
-
-
-  <div class="card blue lighten-4 card-panel">
-    <div class="card-content">
-
-      <h4>{{post.text}}</h4>
-
-      {{#if post.hasImage}}
-      <img src={{post.imageLink}} class="responsive-img" alt="">
-      {{/if}}
-
+{{#each posts as |post|}}
+<div class="card">
+    <h4 class="card-header bg-info">
+        <a class="text-white" href="/post/{{post.id}}">{{post.title}}</a>
+    </h4>
+    <div class="card-body">
+        <p class="card-text">{{post.content}}</p>
+        <small class="text-muted">posted by {{post.user.name}} on {{formatDate post.date_created}}</small>
     </div>
-
-    <div class="card-action">
-      <p>Posted by {{post.user.name}} on {{format_date post.createdAt}}</p>
-    </div>
-
-  </div>
-
-  {{/each}}
 </div>
+{{/each}}
