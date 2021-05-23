@@ -4,11 +4,7 @@
 ---
 * [Description](#Description)
 * [Technologies](#Technologies)
-* [Responsibilities](#Responsibilities)
-* [Credits](#Credits)
-* [Authors](#Authors)
 * [Website](#Website)
-* [Presentation](#Presentation)
 * [License](#License)
 
 
@@ -24,25 +20,6 @@ A tech blog application to share solutions and other cool things.
 - Handlebars templating engine
 - Materialize framework for CSS
 
-
-## Breakdown of Responsibilities
-- DB - Corbin, Colin
-- Server - Faiz, Adam
-- Front End - Corbin, Adam
-- Routes - Sandu, Adam
-- Models - Renae, Colin
-- Auth - Renae
-
-
-## Credits
----
-    The following tutorials were used: 
-        * https://www.w3schools.com/howto/howto_css_modals.asp : used for modal 
-        * https://github.com/Rob--W/cors-anywhere
-        * https://www.w3schools.com/graphics/google_maps_intro.asp
-        * https://developers.google.com/maps/documentation/javascript/overview
-        * http://www.passportjs.org/docs/
-        * http://expressjs.com/
 
 
 
